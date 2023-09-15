@@ -1,108 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Tournament Ladder</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Admin Panel -->
-  <div id="admin-panel">
     <h1>Admin Panel</h1>
-    <button onclick="createTournament()">Create Tournament</button>
-    <button onclick="editTournament()">Edit Tournament</button>
-    <button onclick="deleteTournament()">Delete Tournament</button>
-  </div>
 
-  <!-- Tournament Ladder -->
-  <div id="tournament-ladder">
-    <h1>Tournament Ladder</h1>
-    <ul id="tournament-list"></ul>
-  </div>
+    <div id="upload-form">
+        <h2>Upload Tournament</h2>
 
-  <!-- Script -->
-  <script>
-    // Get the tournament list element
-    const tournamentList = document.getElementById('tournament-list');
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="tournament-file">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
 
-    // Create a function to create a new tournament
-    function createTournament() {
-      // Get the tournament name
-      const tournamentName = prompt('Enter the tournament name:');
+    <div id="edit-form">
+        <h2>Edit Tournament</h2>
 
-      // Create a new tournament object
-      const tournament = {
-        name: tournamentName,
-        status: 'Upcoming'
-      };
+        <form action="/edit" method="post">
+            <input type="hidden" name="tournament-id">
+            <input type="text" name="tournament-name" placeholder="Tournament Name">
+            <input type="date" name="tournament-start-date" placeholder="Start Date">
+            <input type="date" name="tournament-end-date" placeholder="End Date">
+            <button type="submit">Save</button>
+        </form>
+    </div>
 
-      // Add the tournament to the tournament list
-      tournamentList.appendChild(createTournamentListItem(tournament));
-    }
-
-    // Create a function to edit an existing tournament
-    function editTournament() {
-      // Get the tournament to edit
-      const tournament = tournamentList.querySelector('.tournament--selected');
-
-      // Get the new tournament name
-      const tournamentName = prompt('Enter the new tournament name:');
-
-      // Update the tournament name
-      tournament.name = tournamentName;
-
-      // Update the tournament list item
-      tournamentList.replaceChild(createTournamentListItem(tournament), tournament);
-    }
-
-    // Create a function to delete a tournament
-    function deleteTournament() {
-      // Get the tournament to delete
-      const tournament = tournamentList.querySelector('.tournament--selected');
-
-      // Remove the tournament from the tournament list
-      tournamentList.removeChild(tournament);
-    }
-
-    // Create a function to create a tournament list item
-    function createTournamentListItem(tournament) {
-      // Create a new list item element
-      const listItem = document.createElement('li');
-
-      // Add the tournament name to the list item
-      listItem.innerHTML = `
-        <span class="tournament--name">${tournament.name}</span>
-        <span class="tournament--status">${tournament.status}</span>
-      `;
-
-      // Add a click event listener to the list item to select it
-      listItem.addEventListener('click', function() {
-        // Remove the selected class from all other list items
-        tournamentList.querySelectorAll('.tournament--selected').forEach(listItem => listItem.classList.remove('tournament--selected'));
-
-        // Add the selected class to the current list item
-        this.classList.add('tournament--selected');
-      });
-
-      // Return the list item element
-      return listItem;
-    }
-
-    // Initialize the tournament ladder
-    function init() {
-      // Create a new tournament list
-      tournamentList.innerHTML = '';
-
-      // Add some sample tournaments
-      tournamentList.appendChild(createTournamentListItem({ name: 'The International 2023', status: 'Ongoing' }));
-      tournamentList.appendChild(createTournamentListItem({ name: 'IEM Rio Major 2023', status: 'Upcoming' }));
-      tournamentList.appendChild(createTournamentListItem({ name: 'ESL Pro League Season 17', status: 'Completed' }));
-    }
-
-    // Initialize the tournament ladder
-    init();
-  </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
+<style> body {
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+#upload-form,
+#edit-form {
+    margin: 20px auto;
+    width: 500px;
+}
+
+input,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #000;
+    color: #fff;
+}
+</style>
+<script>
+  // Get the edit form
+const editForm = document.querySelector("#edit-form");
+
+// Listen for the edit form to be submitted
+editForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    // Get the tournament ID
+    const tournamentId = event.target.querySelector("input[name='tournament-id']").value;
+
+    // Get the tournament data
+    const tournamentName = event.target.querySelector("input[name='tournament-name']").value;
+    const tournamentStartDate = event.target.querySelector("input[name='tournament-start-date']").value;
+    const tournamentEndDate = event.target.querySelector("input[name='tournament-end-date']").value;
+
+    // Create a new tournament object
+    const tournament = {
+        name: tournamentName,
+        startDate: tournamentStartDate,
+        endDate: tournamentEndDate,
+    };
+
+    // Update the tournament file
+    await fetch(`/edit/${tournamentId}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(tournament),
+    });
+
+    // Clear the edit form
+    editForm.reset();
+
+    // Reload the page
+    location.reload();
+});
+</script>
