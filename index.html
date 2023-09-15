@@ -174,3 +174,51 @@ h2 {
 }
 
 </style>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournaments</title>
+</head>
+<body>
+    <h1>Tournaments</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script>
+                // Get the tournaments data
+                const tournaments = JSON.parse(fetch("/tournaments.json").then(response => response.json()));
+
+                // Display the tournaments data in a table
+                tournaments.forEach(tournament => {
+                    const row = document.createElement("tr");
+
+                    const nameCell = document.createElement("td");
+                    nameCell.textContent = tournament.name;
+                    row.appendChild(nameCell);
+
+                    const startDateCell = document.createElement("td");
+                    startDateCell.textContent = tournament.startDate;
+                    row.appendChild(startDateCell);
+
+                    const endDateCell = document.createElement("td");
+                    endDateCell.textContent = tournament.endDate;
+                    row.appendChild(endDateCell);
+
+                    document.querySelector("tbody").appendChild(row);
+                });
+            </script>
+        </tbody>
+    </table>
+</body>
+</html>
