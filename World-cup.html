@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Ladder</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+</head>
+<body>
+    <header>
+        <h1>World Cup : Last Bracket</h1>
+    </header>
+    <main>
+        <section class="tournament-info">
+            <h2>Tournament Information</h2>
+            <p>Date: <span id="tournament-date">September 20, 2023</span></p>
+            <p>Game Info: <span id="tournament-location">3v3 Search And Destroy</span></p>
+        </section>
+        <section class="bracket">
+            <h2>Tournament Bracket</h2>
+            <div class="round">
+                <div class="match">
+                    <div class="team">ExT</div>
+                    <div class="team">TBD</div>
+                </div>
+                <div class="match">
+                    <div class="team">TBD</div>
+                    <div class="team">TBD</div>
+                </div>
+                                <div class="match">
+                    <div class="team">TBD</div>
+                    <div class="team">TBD</div>
+                </div>              <div class="match">
+                    <div class="team">TBD</div>
+                    <div class="team">TBD</div>
+                </div>
+            </div>
+            <!-- Add more rounds and matches here -->
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+<style>
+  /* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set a background gradient */
+body {
+    background: linear-gradient(45deg, #000428, #004e92);
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+}
+
+header {
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
+/* Tournament Info Section */
+.tournament-info {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.tournament-info p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Bracket Styles */
+.bracket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.round {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    align-items: center;
+}
+
+.match {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.match:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.team {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.match .team.winner {
+    background-color: #4caf50; /* Green background for winners */
+    color: #fff;
+    box-shadow: none;
+}
+
+.match:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.round::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 2px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Additional styling for buttons and animations */
+.button {
+    background-color: #ff5722;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: #e64a19;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+</style>
