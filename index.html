@@ -1,224 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Ladder</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-</head>
-<body>
-    <header>
-        <h1>World Cup : Last Bracket</h1>
-    </header>
-    <main>
-        <section class="tournament-info">
-            <h2>Tournament Information</h2>
-            <p>Date: <span id="tournament-date">September 20, 2023</span></p>
-            <p>Game Info: <span id="tournament-location">3v3 Search And Destroy</span></p>
-        </section>
-        <section class="bracket">
-            <h2>Tournament Bracket</h2>
-            <div class="round">
-                <div class="match">
-                    <div class="team">ExT</div>
-                    <div class="team">TBD</div>
-                </div>
-                <div class="match">
-                    <div class="team">TBD</div>
-                    <div class="team">TBD</div>
-                </div>
-                                <div class="match">
-                    <div class="team">TBD</div>
-                    <div class="team">TBD</div>
-                </div>              <div class="match">
-                    <div class="team">TBD</div>
-                    <div class="team">TBD</div>
-                </div>
-            </div>
-            <!-- Add more rounds and matches here -->
-        </section>
-    </main>
-    <script src="script.js"></script>
-</body>
-</html>
+	<div id="sidebar">
+		<div id="header"> <img  alt="logo" style=" padding-left: 25%;" width="50%" src="https://i.imgur.com/UGPz7wc.png">   </div>
+    
+	<div id="text">
+		<p class="intro">A brand new Esports tournament site. Put your skills to the test against friends or strangers for real money.</p>
+		<hr style="border: 2px solid #D32436;" />
+		<p class="intro">Sign up today and get £5 free to play with on launch.</p>
+	</div>
+		
+    
+	<div id="icons">
+		<!-- Instagram icon -->
+		<!-- Twitter icon -->
+		</div>
+		
+		
+	</div>
+	
+	<div id="cta">
+	<div id="container">
+		<p class="cta"> PUT YOUR MONEY<br> WHERE YOUR MOUTH IS.</p>
+    			<button type="button" class=" btn-primary">Sign Up</button>
+		</div>
+	</div>
+		</div>
 <style>
-  /* Reset default styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@charset "utf-8";
+/* CSS Document */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap');
+
+
+
+p {font-family: 'Rajdhani', sans-serif; }
+
+body { 
+			background-image: url("https://i.imgur.com/JeWOFew.png");
+			background-position: center center;
+			background-repeat:  no-repeat;
+			background-attachment: fixed;
+			background-size:  cover;
+			background-color: #999;
+  }
+
+
+
+#sidebar {
+	background-color:#000E22;
+  height: 100%;
+  width: 30rem;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
-/* Set a background gradient */
-body {
-    background: linear-gradient(45deg, #000428, #004e92);
-    font-family: 'Roboto', sans-serif;
-    color: #fff;
+
+
+
+#cta {
+	text-align: left;
+	margin-left: 60%;
+	padding-top: 15rem;
 }
 
-header {
-    background-color: #333;
-    padding: 20px;
-    text-align: center;
+
+#text{
+	overflow: hidden !important;
+	padding-top: 3em;
+	margin-left: 3rem;
+	margin-right: 4em;
+	
 }
 
-h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
+.intro{
+	overflow: auto;
+	color: #D32436;
+	font-size: 1.75em;
 }
 
-h2 {
-    font-size: 24px;
-    border-bottom: 2px solid #fff;
-    padding-bottom: 10px;
-    margin-top: 20px;
+#container{
+	padding-right: 6rem;
+	
 }
 
-/* Tournament Info Section */
-.tournament-info {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
+.cta {
+	overflow: auto;
+	color: #FFFFFF;
+	font-size: 4em;
 }
 
-.tournament-info p {
-    font-size: 18px;
-    margin: 10px 0;
+#container{
+margin-top: 10%;
 }
 
-/* Bracket Styles */
-.bracket {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
+.btn-primary {
+  font-family:"Ubuntu" ;
+  font-size: 1.7rem;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  line-height: 3.5rem;
+  background-color: #000E22;
+  border-radius: 40px;
+  transition: all 0.3s ease 0s;
+  padding-left: 1.7em;
+  padding-right: 1.7em;
+  border: none;
 }
-
-.round {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 40px;
-    align-items: center;
-}
-
-.match {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease-in-out;
-}
-
-.match:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.team {
-    flex: 1;
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.match .team.winner {
-    background-color: #4caf50; /* Green background for winners */
-    color: #fff;
-    box-shadow: none;
-}
-
-.match:not(:last-child) {
-    margin-bottom: 20px;
-}
-
-.round::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -20px;
-    width: 2px;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-/* Additional styling for buttons and animations */
-.button {
-    background-color: #ff5722;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.button:hover {
-    background-color: #e64a19;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.fade-in {
-    animation: fadeIn 1s ease-in-out;
-}
-
 </style>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tournaments</title>
-</head>
-<body>
-    <h1>Tournaments</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <script>
-                // Get the tournaments data
-                const tournaments = JSON.parse(fetch("/tournaments.json").then(response => response.json()));
-
-                // Display the tournaments data in a table
-                tournaments.forEach(tournament => {
-                    const row = document.createElement("tr");
-
-                    const nameCell = document.createElement("td");
-                    nameCell.textContent = tournament.name;
-                    row.appendChild(nameCell);
-
-                    const startDateCell = document.createElement("td");
-                    startDateCell.textContent = tournament.startDate;
-                    row.appendChild(startDateCell);
-
-                    const endDateCell = document.createElement("td");
-                    endDateCell.textContent = tournament.endDate;
-                    row.appendChild(endDateCell);
-
-                    document.querySelector("tbody").appendChild(row);
-                });
-            </script>
-        </tbody>
-    </table>
-</body>
-</html>
